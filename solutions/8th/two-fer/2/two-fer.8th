@@ -1,0 +1,11 @@
+: two-fer \ ? -- s
+  null? if
+    drop "One for you, one for me."
+  else
+    s:len 0 = if
+      drop "One for you, one for me."
+    else
+      "One for " swap s:+ ", one for me." s:+
+    then
+  then
+;
