@@ -1,0 +1,9 @@
+: leap-year? \
+  dup
+  100 /mod drop 0 =
+  if
+    400 /mod drop 0 =
+  else
+    4 /mod drop 0 =
+  then
+;

@@ -1,0 +1,44 @@
+: istriangle? \ n n n -- T
+dup 0 = if 3drop false
+else
+  rot dup 0 = if 3drop false
+  else
+    rot dup 0 = if 3drop false
+    else
+      3dup n:+ n:< -3 roll
+      rot 3dup n:+ n:< -3 roll
+      rot n:+ n:<
+      and and
+    then
+  then
+then
+;
+
+: equilateral? \ n n n -- T
+3dup istriangle? not if 3drop false
+else
+  2dup n:= -3 roll
+  rot n:=
+  drop and
+then
+;
+
+: scalene? \ n n n -- T
+3dup istriangle? not if 3drop false
+else
+  2dup n:= not -3 roll
+  rot 2dup n:= not -3 roll
+  rot 2dup n:= not -3 roll
+  3drop and and
+then
+;
+
+: isosceles? \ n n n -- T
+3dup istriangle? not if 3drop false
+else
+  2dup n:= -3 roll
+  rot 2dup n:= -3 roll
+  rot 2dup n:= -3 roll
+  3drop xor xor
+then
+;
