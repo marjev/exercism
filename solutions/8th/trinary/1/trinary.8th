@@ -1,0 +1,13 @@
+: num> \ c -- n
+    dup 48 = if drop 0 ;then
+    dup 49 = if drop 1 ;then
+    dup 50 = if drop 2 ;then
+    null
+;
+
+: trinary> \ s -- n
+  dup ( '0 '2 between and ) true s:reduce
+  if ( num> swap 3 n:* n:+ ) 0 s:reduce
+  else drop 0
+  then
+;
