@@ -1,0 +1,14 @@
+: darts-score \ n n -- n
+  dup n:* swap
+  dup n:*
+  n:+ n:sqrt
+  dup 1 > not if drop 10
+  else
+    dup 5 > not if drop 5
+    else
+      10 > not if 1
+      else 0
+      then
+    then
+  then
+;
