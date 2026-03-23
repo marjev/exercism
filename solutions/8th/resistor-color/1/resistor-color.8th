@@ -1,0 +1,14 @@
+: colors \ -- a
+["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"]
+;
+
+: color-code \ s -- n
+  colors
+  (
+    2 pick s:= if
+      nip break
+    else
+      drop
+    then
+  ) a:each drop
+;
