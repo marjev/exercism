@@ -1,0 +1,44 @@
+: is-question \ s -- b
+  1 s:rsub "?" =
+;
+
+: is-capitalized \ s -- b
+  s:uc s:cmp 0 =
+;
+
+: is-letter \ n -- b
+  dup 65 90 n:between
+  swap 97 122 n:between or
+;
+
+: contains-letter \ s -- b
+  false swap
+  ( nip is-letter if
+      drop true break
+    then
+  ) s:each
+;
+
+: is-capitalized-word \ s -- b
+  contains-letter swap dup is-capitalized and
+;
+
+: bob \ s -- s
+  dup s:trim s:len 0 = if
+    2drop "Fine. Be that way!" cr
+  else
+    dup is-question if
+      dup is-capitalized-word if
+        drop "Calm down, I know what I'm doing!" cr
+      else
+        drop "Sure." cr
+      then
+    else
+       dup is-capitalized-word if
+        drop "Whoa, chill out!" cr
+      else
+        drop "Whatever." cr
+      then
+    then
+  then
+;
