@@ -1,0 +1,18 @@
+: calculate \ n --
+  dup
+  3 pick swap 1 s:slice swap
+  2 pick swap 1 s:slice s:cmp
+  0 n:= if 0 else 1 then
+  n:abs
+  3 roll n:+ -rot
+;
+
+: distance \ s1 s2 -- n
+s:2len n:= not if null 2nip
+else
+  0 -rot
+  dup s:len 1 n:- nip
+  ( calculate ) 0 rot loop
+  2drop
+then
+;
