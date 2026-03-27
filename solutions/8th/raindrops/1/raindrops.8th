@@ -1,0 +1,14 @@
+: raindrops \ n -- s
+dup dup dup
+3 mod 0 n:= not -rot
+5 mod 0 n:= not swap
+7 mod 0 n:= not
+3dup and and
+if 3drop >s cr
+else
+  rot not if "Pling" else "" then
+  rot not if "Plang" s:+ then
+  swap not if "Plong" s:+ then
+  nip
+then
+;
